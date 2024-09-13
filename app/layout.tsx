@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Link from "next/link";
+import React from "react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -21,9 +22,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  profile,
 }: Readonly<{
   children: React.ReactNode;
+  profile: React.ReactNode;
 }>) {
+  const isAdmin = false;
   return (
     <html lang="en">
       <body
@@ -32,14 +36,15 @@ export default function RootLayout({
         <nav>
           <ul className="flex gap-2 justify-between px-4 bg-blue-700">
             <li>
-              <Link href={'/'}>Home</Link>
-              </li>
+              <Link href={"/"}>Home</Link>
+            </li>
             <li>
-            <Link href={'/about'}>About</Link>
+              <Link href={"/about"}>About</Link>
             </li>
           </ul>
         </nav>
         {children}
+        {isAdmin && profile}
       </body>
     </html>
   );
