@@ -1,13 +1,30 @@
+import createPost from "@/server/actions/create-posts";
+import getPosts from "@/server/actions/get-posts";
 import Image from "next/image";
 
 export default async function Home() {
-  const data = await fetch("https://jsonplaceholder.typicode.com/todos/1");
-  const todo = await data.json();
-  console.log(todo);
-  return (
-    <main>
-      <h1>{todo.title}</h1>
-      <Image src="./vercel.svg" alt="Vercel logo" width={72} height={16} />
-    </main>
-  );
+  const { error, succes } = await getPosts();
+  if (error) {
+    throw new Error(error);
+  }
+  if (succes)
+    return (
+      <main>
+        {succes.map((post) => (
+          <div key={post.id}>
+            <h2>{post.title}</h2>
+          </div>
+        ))}
+        <form action={createPost}>
+          <input
+            className="bg-black"
+            type="text"
+            name="title"
+            placeholder="Title"
+          />
+          <button type="submit">Submit</button>
+        </form>
+        <Image src="./vercel.svg" alt="Vercel logo" width={72} height={16} />
+      </main>
+    );
 }
