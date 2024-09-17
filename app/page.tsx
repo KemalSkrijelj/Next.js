@@ -1,7 +1,7 @@
 import createPost from "@/server/actions/create-posts";
 import getPosts from "@/server/actions/get-posts";
 import Image from "next/image";
-
+import PostBtn from "@/components/post-btn";
 export default async function Home() {
   const { error, succes } = await getPosts();
   if (error) {
@@ -22,7 +22,7 @@ export default async function Home() {
             name="title"
             placeholder="Title"
           />
-          <button type="submit">Submit</button>
+          <PostBtn />
         </form>
         <Image src="./vercel.svg" alt="Vercel logo" width={72} height={16} />
       </main>
