@@ -8,6 +8,13 @@
       "when": 1726336947928,
       "tag": "0000_soft_viper",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1726946848037,
+      "tag": "0001_new_leopardon",
+      "breakpoints": true
     }
   ]
 }
