@@ -8,8 +8,8 @@ import Link from "next/link";
 export default async function Nav() {
   const session = await auth();
   return (
-    <header className=" py-8">
-      <nav>
+    <header className="">
+      <nav className="bg-slate-500   items-center">
         <ul className="flex justify-between">
           <li>
             <Logo />
@@ -17,7 +17,7 @@ export default async function Nav() {
           {!session ? (
             <li>
               <Button asChild className="bg-green-400 color-white">
-                <Link className="flex gap-2" href="/api/auth/signin">
+                <Link className="flex gap-2" href="/auth/login">
                   <LogIn size={16}/>
                   <span>Login</span>
                 </Link>
