@@ -21,20 +21,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  profile,
 }: Readonly<{
   children: React.ReactNode;
-  profile: React.ReactNode;
 }>) {
-  const isAdmin = false;
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased px-6 md:px-12 max-w-7x1 mx-auto`}
       >
         <Nav />
         {children}
-        {isAdmin && profile}
       </body>
     </html>
   );

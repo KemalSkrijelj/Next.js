@@ -8,8 +8,8 @@ import Link from "next/link";
 export default async function Nav() {
   const session = await auth();
   return (
-    <header className="">
-      <nav className="bg-slate-500   items-center">
+    <header className="py-8">
+      <nav className="">
         <ul className="flex justify-between">
           <li>
             <Logo />
