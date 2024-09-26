@@ -2,7 +2,7 @@ import { auth } from "@/server/auth";
 import { UserButton } from "./user-button";
 import { Button } from "../ui/button";
 import { LogIn } from "lucide-react";
-import Logo from "./logo";
+import Logo from "@/components/navigation/logo";
 import Link from "next/link";
 
 export default async function Nav() {
@@ -12,13 +12,15 @@ export default async function Nav() {
       <nav className="">
         <ul className="flex justify-between">
           <li>
-            <Logo />
+            <Link href={'/'}>
+              <Logo />
+            </Link>
           </li>
           {!session ? (
             <li>
               <Button asChild className="bg-green-400 color-white">
                 <Link className="flex gap-2" href="/auth/login">
-                  <LogIn size={16}/>
+                  <LogIn size={16} />
                   <span>Login</span>
                 </Link>
               </Button>
