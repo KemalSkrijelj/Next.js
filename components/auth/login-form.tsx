@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { AuthCard } from "./auth-card";
@@ -17,6 +18,10 @@ import z from "zod";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { emailSignIn } from "@/server/actions/email-signin";
+import { useAction } from "next-safe-action/hook";
+import { cn } from "@/lib/utils";
+
 export const LoginForm = () => {
   const form = useForm({
     resolver: zodResolver(LoginSchema),
@@ -25,9 +30,13 @@ export const LoginForm = () => {
       password: "",
     },
   });
+
+  const { execute, status } = useAction(emailSignIn, {});
+
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
-    console.log(values);
+    execute(values)
   };
+
   return (
     <AuthCard
       cardTitle="Welcome Back"
@@ -82,7 +91,15 @@ export const LoginForm = () => {
                 <Link href="/auth/reset">Forgot your password</Link>
               </Button>
             </div>
-            <Button type="submit" className="w-full my-2">{"Login"}</Button>
+            <Button
+              type="submit"
+              className={cn(
+                "w-full",
+                status === "executing" ? "animate-pulse" : ""
+              )}
+            >
+              {"Login"}
+            </Button>
           </form>
         </Form>
       </div>

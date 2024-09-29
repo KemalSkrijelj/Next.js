@@ -15,6 +15,13 @@
       "when": 1726946848037,
       "tag": "0001_new_leopardon",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1727627687253,
+      "tag": "0002_special_selene",
+      "breakpoints": true
     }
   ]
 }
