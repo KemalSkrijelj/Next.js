@@ -12,13 +12,13 @@ export default async function Nav() {
       <nav className="">
         <ul className="flex justify-between">
           <li>
-            <Link href={'/'}>
+            <Link href={"/"}>
               <Logo />
             </Link>
           </li>
           {!session ? (
-            <li>
-              <Button asChild className="bg-green-400 color-white">
+            <li className="flex items-center justify-center">
+              <Button asChild>
                 <Link className="flex gap-2" href="/auth/login">
                   <LogIn size={16} />
                   <span>Login</span>
@@ -26,11 +26,8 @@ export default async function Nav() {
               </Button>
             </li>
           ) : (
-            <li>
-              <UserButton
-                expires={session?.expires ?? ""}
-                user={session?.user}
-              />
+            <li className="flex items-center justify-center">
+              <UserButton expires={session?.expires} user={session?.user} />
             </li>
           )}
         </ul>
